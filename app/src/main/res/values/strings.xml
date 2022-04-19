@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Triangle Calculator</string>
+    <string-array name="theorems_array">
+        <item>AAA</item>
+        <item>AAS</item>
+        <item>SAS</item>
+        <item>ASS</item>
+        <item>ASA</item>
+        <item>SSS</item>
+
+    </string-array>
+
 </resources>

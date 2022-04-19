@@ -4,4 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    android:background="#DC143C">
+
+    <EditText
+        android:id="@+id/A"
+        android:layout_width="50dp"
+        android:layout_height="54dp"
+        android:background="#000000"
+        android:ems="10"
+        android:inputType="number"
+        android:text="A"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <EditText
+        android:id="@+id/B"
+        android:layout_width="50dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="B"
+        android:background="#000000"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/A"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <EditText
+        android:id="@+id/C"
+        android:layout_width="50dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="C"
+        android:background="#000000"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/B"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="58dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="4dp"
+        android:background="#000000"
+        android:gravity="center"
+        android:text="= Side A"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/A"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="58dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="4dp"
+        android:background="#000000"
+        android:gravity="center"
+        android:text="= Side B"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="70dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="58dp"
+        android:layout_height="54dp"
+        android:background="#000000"
+        android:gravity="center"
+        android:text="= Side C"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="237dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="383dp"
+        android:layout_height="378dp"
+        app:srcCompat="@drawable/triangle"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="320dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="409dp"
+        android:layout_height="42dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="7dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

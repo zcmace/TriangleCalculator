@@ -47,8 +47,6 @@ public class Triangle {
         this.sideB = Math.sin(angleB)/lawOfSinesValue;
         this.sideC = Math.sin(angleC)/lawOfSinesValue;
 
-
-
     }
 
 
