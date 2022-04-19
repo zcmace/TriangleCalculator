@@ -7,6 +7,15 @@ public class Triangle {
     side counter part (e.g. angleA is across from SideA).
     */
 
+    private double angleA;
+    private double angleB;
+    private double angleC;
+
+    private double sideA;
+    private double sideB;
+    private double sideC;
+
+
     public Triangle(){
 
     }
@@ -26,14 +35,70 @@ public class Triangle {
     }
 
     /* Calculate the sides and angles of a triangle given two angles and a side */
-    public double CalculateAAS(double angleA, double angleB, double sideA){
+    public void CalculateAAS(double angleA, double angleB, double sideA){
 
-        double angleC = 180 - angleA - angleB;
+        this.angleA = angleA;
+        this.angleB = angleB;
+        this.sideA = sideA;
 
-        
+        this.angleC = CalculateAAA(angleA, angleB);
 
-        return result;
+        double lawOfSinesValue = Math.sin(angleA)/sideA;
+        this.sideB = Math.sin(angleB)/lawOfSinesValue;
+        this.sideC = Math.sin(angleC)/lawOfSinesValue;
+
+
+
     }
 
+
+    //getters and setters
+    public double getAngleA() {
+        return angleA;
+    }
+
+    public void setAngleA(double angleA) {
+        this.angleA = angleA;
+    }
+
+    public double getAngleB() {
+        return angleB;
+    }
+
+    public void setAngleB(double angleB) {
+        this.angleB = angleB;
+    }
+
+    public double getAngleC() {
+        return angleC;
+    }
+
+    public void setAngleC(double angleC) {
+        this.angleC = angleC;
+    }
+
+    public double getSideA() {
+        return sideA;
+    }
+
+    public void setSideA(double sideA) {
+        this.sideA = sideA;
+    }
+
+    public double getSideB() {
+        return sideB;
+    }
+
+    public void setSideB(double sideB) {
+        this.sideB = sideB;
+    }
+
+    public double getSideC() {
+        return sideC;
+    }
+
+    public void setSideC(double sideC) {
+        this.sideC = sideC;
+    }
 }
 
