@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 String item = (String) adapterView.getItemAtPosition(i);
                 System.out.println(item);
                 theorem = item;
+                resetLayout(inputLayout);
 
                 switch(item){
                     case "AAS":
@@ -161,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
         triangle.debugLog();
     }
     public void instantiateSAS(){
-        inputLayout.removeAllViews();
 
         inputLayout.addView(sideCLabel);
         inputLayout.addView(sideCinput);
@@ -172,7 +172,6 @@ public class MainActivity extends AppCompatActivity {
         referenceImage.setImageResource(R.drawable.sas_white_background);
     }
     public void instantiateAAS(){
-        inputLayout.removeAllViews();
 
         inputLayout.addView(angleALabel);
         inputLayout.addView(angleAinput);
@@ -183,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
         referenceImage.setImageResource(R.drawable.aas_white_background);
     }
     public void instantiateASA(){
-        inputLayout.removeAllViews();
 
         inputLayout.addView(angleALabel);
         inputLayout.addView(angleAinput);
@@ -194,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         referenceImage.setImageResource(R.drawable.asa_white_background);
     }
     public void instantiateAAA(){
-        inputLayout.removeAllViews();
+
 
         inputLayout.addView(angleALabel);
         inputLayout.addView(angleAinput);
@@ -204,8 +202,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void instantiateSSS(){
-
-        inputLayout.removeAllViews();
 
         inputLayout.addView(sideALabel);
         inputLayout.addView(sideAinput);
@@ -268,5 +264,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void resetLayout(LinearLayout layout){
+        for(int i = 0; i < layout.getChildCount(); i++){
+            View currentView = layout.getChildAt(i);
+            if (currentView instanceof EditText){
+                ((EditText) currentView).setText("");
+            }
+
+        }
+        layout.removeAllViews();
+    }
 
 }
