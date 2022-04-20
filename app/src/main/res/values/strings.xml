@@ -7,7 +7,20 @@
         <item name="ASA">ASA</item>
         <item name="SSS">SSS</item>
     </string-array>
-    <string name="side_a_label">This is side A</string>
+    <string name="side_a_label">Enter length of Side a: </string>
+    <string name="side_b_label">Enter length of Side b: </string>
+    <string name="side_c_label">Enter length of Side c: </string>
+    <string name="angle_a_label">Enter Angle A in Degrees: </string>
+    <string name="angle_b_label">Enter Angle B in Degrees: </string>
+    <string name="angle_c_label">Enter Angle C in Degrees: </string>
+
+    <string name="side_a_output">Side a: </string>
+    <string name="side_b_output">Side b: </string>
+    <string name="side_c_output">Side c: </string>
+    <string name="angle_a_output">Angle A: </string>
+    <string name="angle_b_output">Angle B: </string>
+    <string name="angle_c_output">Angle C: </string>
+
     <string name="calculate_button_text">Press to Calculate!</string>
     <string name="triangle_description">This is a triangle for reference with the Theorems</string>
 

@@ -40,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView angleBLabel;
     private TextView angleCLabel;
 
+    //outputs
+    private TextView sideAOutput;
+    private TextView sideBOutput;
+    private TextView sideCOutput;
+    private TextView angleAOutput;
+    private TextView angleBOutput;
+    private TextView angleCOutput;
+
+
 
 
     @Override
@@ -74,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(item);
                 theorem = item;
                 resetLayout(inputLayout);
+                resetLayout(outputLayout);
+                resetOutputs();
 
                 switch(item){
                     case "AAS":
@@ -103,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //create labels and inputs
+        //create labels and inputs for inputLayout
         CreateLabelsAndInputs();
 
         //bind referenceImage
@@ -117,6 +128,9 @@ public class MainActivity extends AppCompatActivity {
         if (focus != null){
             focus.onEditorAction(EditorInfo.IME_ACTION_DONE);
         }
+        resetLayout(outputLayout);
+        resetOutputs();
+
         //switch statement to decide theorem method
         switch(theorem){
             case "AAA":
@@ -131,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                         Double.parseDouble(angleBinput.getText().toString()),
                         Double.parseDouble(sideAinput.getText().toString())
                 );
+
                 break;
             case "SAS":
                 triangle.CalculateSAS(
@@ -158,6 +173,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
         }
+
+        showOutputs();
 
         triangle.debugLog();
     }
@@ -215,24 +232,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void CreateLabelsAndInputs(){
         sideALabel = new TextView(this);
-        sideALabel.setText("Enter length of Side a: ");
+        sideALabel.setText(R.string.side_a_label);
         sideALabel.setTextSize(18f);
         sideAinput = new EditText(this);
         sideAinput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sideAinput.setTag("SideAInput");
 
         sideBLabel = new TextView(this);
         sideBLabel.setPadding(0,20,0,0);
-        sideBLabel.setText("Enter length of Side b: ");
+        sideBLabel.setText(R.string.side_b_label);
         sideBLabel.setTextSize(18f);
         sideBinput = new EditText(this);
         sideBinput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sideBinput.setTag("SideBInput");
-
 
         sideCLabel = new TextView(this);
         sideCLabel.setPadding(0,20,0,0);
-        sideCLabel.setText("Enter length of Side c: ");
+        sideCLabel.setText(R.string.side_c_label);
         sideCLabel.setTextSize(18f);
         sideCinput = new EditText(this);
         sideCinput.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -240,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
 
         angleALabel = new TextView(this);
         angleALabel.setPadding(0,20,0,0);
-        angleALabel.setText("Enter Angle A in Degrees: ");
+        angleALabel.setText(R.string.angle_a_label);
         angleALabel.setTextSize(18f);
         angleAinput = new EditText(this);
         angleAinput.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -248,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
         angleBLabel = new TextView(this);
         angleBLabel.setPadding(0,20,0,0);
-        angleBLabel.setText("Enter Angle B in Degrees: ");
+        angleBLabel.setText(R.string.angle_b_label);
         angleBLabel.setTextSize(18f);
         angleBinput = new EditText(this);
         angleBinput.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -256,12 +270,35 @@ public class MainActivity extends AppCompatActivity {
 
         angleCLabel = new TextView(this);
         angleCLabel.setPadding(0,20,0,0);
-        angleCLabel.setText("Enter Angle C in Degrees: ");
+        angleCLabel.setText(R.string.angle_c_label);
         angleCLabel.setTextSize(18f);
         angleCinput = new EditText(this);
         angleCinput.setInputType(InputType.TYPE_CLASS_NUMBER);
         angleCinput.setTag("angleCInput");
 
+        sideAOutput = new TextView(this);
+        sideAOutput.setText(R.string.side_a_output);
+        sideAOutput.setTextSize(18f);
+
+        sideBOutput = new TextView(this);
+        sideBOutput.setText(R.string.side_b_output);
+        sideBOutput.setTextSize(18f);
+
+        sideCOutput = new TextView(this);
+        sideCOutput.setText(R.string.side_c_output);
+        sideCOutput.setTextSize(18f);
+
+        angleAOutput = new TextView(this);
+        angleAOutput.setText(R.string.angle_a_output);
+        angleAOutput.setTextSize(18f);
+
+        angleBOutput = new TextView(this);
+        angleBOutput.setText(R.string.angle_b_output);
+        angleBOutput.setTextSize(18f);
+
+        angleCOutput = new TextView(this);
+        angleCOutput.setText(R.string.angle_c_output);
+        angleCOutput.setTextSize(18f);
     }
 
     public void resetLayout(LinearLayout layout){
@@ -273,6 +310,42 @@ public class MainActivity extends AppCompatActivity {
 
         }
         layout.removeAllViews();
+
     }
+
+    public void resetOutputs(){
+        angleAOutput.setText(R.string.angle_a_output);
+        angleBOutput.setText(R.string.angle_b_output);
+        angleCOutput.setText(R.string.angle_c_output);
+        sideAOutput.setText(R.string.side_a_output);
+        sideBOutput.setText(R.string.side_b_output);
+        sideCOutput.setText(R.string.side_c_output);
+    }
+
+    public void showOutputs(){
+
+        if (theorem.equals("AAA")){
+            TextView helper = new TextView(this);
+            helper.setText("Cannot Determine Side Lengths With Only Angles");
+            helper.setTextSize(18f);
+            outputLayout.addView(helper);
+        }else{
+            sideAOutput.append(String.format(" %.2f", triangle.getSideA()));
+            sideBOutput.append(String.format(" %.2f", triangle.getSideB()));
+            sideCOutput.append(String.format(" %.2f", triangle.getSideC()));
+            outputLayout.addView(sideAOutput);
+            outputLayout.addView(sideBOutput);
+            outputLayout.addView(sideCOutput);
+        }
+
+        angleAOutput.append(String.format(" %.2f", triangle.getAngleA())+ "\u00B0");
+        angleBOutput.append(String.format(" %.2f", triangle.getAngleB())+ "\u00B0");
+        angleCOutput.append(String.format(" %.2f", triangle.getAngleC())+ "\u00B0");
+        outputLayout.addView(angleAOutput);
+        outputLayout.addView(angleBOutput);
+        outputLayout.addView(angleCOutput);
+    }
+
+
 
 }
