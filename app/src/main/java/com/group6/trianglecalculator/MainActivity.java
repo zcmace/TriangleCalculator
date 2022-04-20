@@ -9,6 +9,8 @@ import android.widget.Spinner;
 public class MainActivity extends AppCompatActivity {
 
     private Triangle triangle;
+    private String theorem;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
 
+
+
+    }
+
+    public void calculateTriangle(){
 
     }
 

@@ -10,4 +10,5 @@
     </string-array>
     <string name="side_a_label">This is side A</string>
     <string name="calculate_button_text">Press to Calculate!</string>
+
 </resources>
