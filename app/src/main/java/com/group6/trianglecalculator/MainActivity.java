@@ -124,10 +124,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculateTriangle(View view){
         System.out.println(theorem);
+
+        //these lines close the keyboard when button is clicked
         EditText focus = (EditText) getCurrentFocus();
         if (focus != null){
             focus.onEditorAction(EditorInfo.IME_ACTION_DONE);
         }
+
+        //reset output textviews to prevent duplication
         resetLayout(outputLayout);
         resetOutputs();
 
@@ -174,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        //show output
         showOutputs();
 
         triangle.debugLog();
@@ -324,6 +329,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showOutputs(){
 
+        //if AAA theorem is used do not show sides
         if (theorem.equals("AAA")){
             TextView helper = new TextView(this);
             helper.setText("Cannot Determine Side Lengths With Only Angles");

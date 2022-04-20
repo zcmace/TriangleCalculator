@@ -23,5 +23,5 @@
 
     <string name="calculate_button_text">Press to Calculate!</string>
     <string name="triangle_description">This is a triangle for reference with the Theorems</string>
-
+    <string name="theorem_label">Use the picker to the right to select a Theorem!</string>
 </resources>
