@@ -240,21 +240,22 @@ public class MainActivity extends AppCompatActivity {
         sideALabel.setText(R.string.side_a_label);
         sideALabel.setTextSize(18f);
         sideAinput = new EditText(this);
-        sideAinput.setInputType(InputType.TYPE_CLASS_NUMBER);
+        sideAinput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
 
         sideBLabel = new TextView(this);
         sideBLabel.setPadding(0,20,0,0);
         sideBLabel.setText(R.string.side_b_label);
         sideBLabel.setTextSize(18f);
         sideBinput = new EditText(this);
-        sideBinput.setInputType(InputType.TYPE_CLASS_NUMBER);
+        sideBinput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
         sideCLabel = new TextView(this);
         sideCLabel.setPadding(0,20,0,0);
         sideCLabel.setText(R.string.side_c_label);
         sideCLabel.setTextSize(18f);
         sideCinput = new EditText(this);
-        sideCinput.setInputType(InputType.TYPE_CLASS_NUMBER);
+        sideCinput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         sideCinput.setTag("SideCInput");
 
         angleALabel = new TextView(this);
@@ -262,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
         angleALabel.setText(R.string.angle_a_label);
         angleALabel.setTextSize(18f);
         angleAinput = new EditText(this);
-        angleAinput.setInputType(InputType.TYPE_CLASS_NUMBER);
+        angleAinput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         angleAinput.setTag("angleAInput");
 
         angleBLabel = new TextView(this);
@@ -270,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
         angleBLabel.setText(R.string.angle_b_label);
         angleBLabel.setTextSize(18f);
         angleBinput = new EditText(this);
-        angleBinput.setInputType(InputType.TYPE_CLASS_NUMBER);
+        angleBinput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         angleBinput.setTag("angleBInput");
 
         angleCLabel = new TextView(this);
@@ -278,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
         angleCLabel.setText(R.string.angle_c_label);
         angleCLabel.setTextSize(18f);
         angleCinput = new EditText(this);
-        angleCinput.setInputType(InputType.TYPE_CLASS_NUMBER);
+        angleCinput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         angleCinput.setTag("angleCInput");
 
         sideAOutput = new TextView(this);
