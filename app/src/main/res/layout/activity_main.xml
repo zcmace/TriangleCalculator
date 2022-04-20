@@ -7,24 +7,28 @@
     android:background="#DC143C">
 
     <LinearLayout
-        android:layout_width="191dp"
-        android:layout_height="194dp"
+        android:id="@+id/inputLayout"
+        android:layout_width="187dp"
+        android:layout_height="256dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintEnd_toStartOf="@+id/outputLayout"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193"></LinearLayout>
+        app:layout_constraintVertical_bias="0.223"/>
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="341dp"
-        android:layout_height="251dp"
+        android:layout_width="404dp"
+        android:layout_height="269dp"
+        android:contentDescription="@string/triangle_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845"
+        app:layout_constraintVertical_bias="0.937"
         app:srcCompat="@drawable/sss_white_background" />
 
     <Spinner
@@ -47,17 +51,20 @@
         android:text="@string/calculate_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.543" />
+
+    <LinearLayout
+        android:id="@+id/outputLayout"
+        android:layout_width="209dp"
+        android:layout_height="256dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="210dp"
-        android:layout_height="195dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="197dp"
-        tools:layout_editor_absoluteY="103dp"></LinearLayout>
+        app:layout_constraintVertical_bias="0.223"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

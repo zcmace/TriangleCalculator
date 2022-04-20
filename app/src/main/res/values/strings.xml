@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">Triangle Calculator</string>
     <string-array name="theorems_array">
-        <item>AAA</item>
-        <item>AAS</item>
-        <item>SAS</item>
-        <item>ASA</item>
-        <item>SSS</item>
+        <item name="AAA">AAA</item>
+        <item name="AAS">AAS</item>
+        <item name="SAS">SAS</item>
+        <item name="ASA">ASA</item>
+        <item name="SSS">SSS</item>
     </string-array>
     <string name="side_a_label">This is side A</string>
     <string name="calculate_button_text">Press to Calculate!</string>
+    <string name="triangle_description">This is a triangle for reference with the Theorems</string>
 
 </resources>
