@@ -3,6 +3,7 @@ package com.group6.trianglecalculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -32,11 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     }
 
-    public void calculateTriangle(){
+    public void calculateTriangle(View view){
+        System.out.println("button clicked");
 
+        triangle.CalculateSAS(15, 30, 30);
+
+        triangle.debugLog();
     }
 
 

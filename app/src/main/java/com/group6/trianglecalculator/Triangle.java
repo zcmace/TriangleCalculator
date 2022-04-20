@@ -1,5 +1,7 @@
 package com.group6.trianglecalculator;
 
+import android.util.Log;
+
 public class Triangle {
 
     /*
@@ -21,17 +23,19 @@ public class Triangle {
     }
 
     /* Calculate the final angle of a triangle given two angles */
-    public double CalculateAAA(double angle1, double angle2)
+    public void CalculateAAA(double angle1, double angle2)
     {
+        this.angleA = angle1;
+        this.angleB = angle2;
         double result = 180 - angle1 - angle2;
 
         if (result <= 0)
         {
             System.out.println("The sum of the two angles must be less than 180 degrees");
-            return -1;
+            return;
+        }else{
+            this.angleC = result;
         }
-
-        return result;
     }
 
     /* Calculate the sides and angles of a triangle given two angles and a side */
@@ -41,14 +45,69 @@ public class Triangle {
         this.angleB = angleB;
         this.sideA = sideA;
 
-        this.angleC = CalculateAAA(angleA, angleB);
+        this.CalculateAAA(angleA, angleB);
 
-        double lawOfSinesValue = Math.sin(angleA)/sideA;
-        this.sideB = Math.sin(angleB)/lawOfSinesValue;
-        this.sideC = Math.sin(angleC)/lawOfSinesValue;
+
+        double lawOfSinesValue = Math.sin(Math.toRadians(angleA))/sideA;
+        this.sideB = Math.sin(Math.toRadians(angleB))/lawOfSinesValue;
+        this.sideC = Math.sin(Math.toRadians(angleC))/lawOfSinesValue;
+
 
     }
 
+    /* calculate the angles and sides of the triangle given an Angle, Side, and Angle */
+    public void CalculateASA(double angleA, double sideC, double angleB){
+        this.angleA = angleA;
+        this.sideC = sideC;
+        this.angleB = angleB;
+
+        this.CalculateAAA(angleA, angleB);
+
+        double lawOfSinesValue = Math.sin(Math.toRadians(angleC))/sideC;
+
+        this.sideA = Math.sin(Math.toRadians(angleA))/lawOfSinesValue;
+        this.sideB = Math.sin(Math.toRadians(angleB))/lawOfSinesValue;
+
+    }
+
+
+    /* calculate the angles and sides of the triangle given a Side, an Angle, and a Side */
+    public void CalculateSAS(double sideC, double angleB, double sideA){
+
+        this.sideC = sideC;
+        this.angleB = angleB;
+        this.sideA = sideA;
+
+        double sideASquared = sideA * sideA;
+        double sideCSquared = sideC * sideC;
+
+
+        this.sideB = Math.sqrt(sideASquared + sideCSquared - (2*sideA*sideC*Math.cos(Math.toRadians(angleB))));
+
+
+        this.angleA = Math.asin(Math.sin(angleB) * sideA / sideB);
+
+        this.angleC = 180 - angleA - angleB;
+
+
+    }
+
+    /* calculate the angles and sides of the triangle given Three sides */
+    public void CalculateSSS(double angleA, double sideC, double angleB){
+
+    }
+
+    /* function to print values of triangle during debugging */
+
+    public void debugLog(){
+        Log.d("t", String.format("Angle A: %.2f", angleA) );
+        Log.d("t", String.format("Angle B: %.2f", angleB) );
+        Log.d("t", String.format("Angle C: %.2f", angleC) );
+        Log.d("t", String.format("Side A: %.2f", sideA) );
+        Log.d("t", String.format("Side B: %.2f", sideB) );
+        Log.d("t", String.format("Side C: %.2f", sideC) );
+
+    }
 
     //getters and setters
     public double getAngleA() {
