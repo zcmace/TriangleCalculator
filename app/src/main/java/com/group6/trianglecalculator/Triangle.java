@@ -84,16 +84,43 @@ public class Triangle {
 
         this.sideB = Math.sqrt(sideASquared + sideCSquared - (2*sideA*sideC*Math.cos(Math.toRadians(angleB))));
 
+        if (sideC > sideA){
+            this.angleA = Math.sin(Math.toRadians(angleB)) * sideA/sideB;
+            this.angleA = Math.toDegrees(Math.asin(this.angleA));
 
-        this.angleA = Math.asin(Math.sin(angleB) * sideA / sideB);
+            this.angleC = 180 - angleA - angleB;
+        }
+        else{
+            this.angleC = Math.sin(Math.toRadians(angleB)) * sideC/sideB;
+            this.angleC = Math.toDegrees(Math.asin(this.angleC));
 
-        this.angleC = 180 - angleA - angleB;
+            this.angleA = 180 - angleC - angleB;
+        }
+
 
 
     }
 
     /* calculate the angles and sides of the triangle given Three sides */
-    public void CalculateSSS(double angleA, double sideC, double angleB){
+    public void CalculateSSS(double sideA, double sideB, double sideC){
+        this.sideA = sideA;
+        double aSquared = sideA*sideA;
+
+        this.sideB = sideB;
+        double bSquared = sideB*sideB;
+
+        this.sideC= sideC;
+        double cSquared = sideC * sideC;
+
+        if(sideA + sideB <= sideC || sideA + sideC <= sideB || sideB + sideC <= sideA)
+        {
+            return;
+        }
+
+        this.angleA = Math.toDegrees(Math.acos(((bSquared + cSquared - aSquared)/(2*sideB*sideC))));
+        this.angleB = Math.toDegrees(Math.acos((cSquared + aSquared - bSquared)/(2*sideC*sideA)));
+        this.angleC = Math.toDegrees(Math.acos((aSquared + bSquared - cSquared)/(2*sideA*sideB)));
+
 
     }
 

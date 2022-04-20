@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public void calculateTriangle(View view){
         System.out.println("button clicked");
 
-        triangle.CalculateSAS(15, 30, 30);
+        triangle.CalculateSSS(48, 26, 45);
 
         triangle.debugLog();
     }
