@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (temp1 >= 180){
 
-                    alertDialog.setMessage("Please enter complete and accurate data.");
+                    alertDialog.setMessage("Angle is larger than 180 degrees.");
                     alertDialog.show();
                     canShowOutputs = false;
                     break;
@@ -252,10 +252,22 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
 
+                temp1 = Double.parseDouble(angleAinput.getText().toString());
+                temp2 = Double.parseDouble(angleBinput.getText().toString());
+
+                if (temp1 + temp2 >= 180){
+
+                    alertDialog.setMessage("Angle sum is larger than 180 degrees.");
+                    alertDialog.show();
+                    canShowOutputs = false;
+                    break;
+
+                }
+
                 triangle.CalculateASA(
-                        Double.parseDouble(angleAinput.getText().toString()),
+                        temp1,
                         Double.parseDouble(sideCinput.getText().toString()),
-                        Double.parseDouble(angleBinput.getText().toString())
+                        temp2
                 );
                 break;
             case "SSS":
@@ -269,11 +281,19 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
 
-                triangle.CalculateSSS(
-                        Double.parseDouble(sideAinput.getText().toString()),
-                        Double.parseDouble(sideBinput.getText().toString()),
-                        Double.parseDouble(sideCinput.getText().toString())
-                        );
+                temp1 = Double.parseDouble(sideAinput.getText().toString());
+                temp2 = Double.parseDouble(sideBinput.getText().toString());
+                temp3 = Double.parseDouble(sideCinput.getText().toString());
+
+                if ( temp1 + temp2 <= temp3 || temp1 + temp3 <= temp2 || temp2 + temp3 <= temp1){
+                    alertDialog.setMessage("The sides are too long. The longest side of the triangle" +
+                                    " must be shorter than the sum of the remaining sides");
+                    alertDialog.show();
+                    canShowOutputs = false;
+                    break;
+                }
+
+                triangle.CalculateSSS(temp1, temp2, temp3);
                 break;
             default:
                 break;
