@@ -25,6 +25,8 @@ public class Triangle {
     /* Calculate the final angle of a triangle given two angles */
     public void CalculateAAA(double angle1, double angle2)
     {
+
+
         this.angleA = angle1;
         this.angleB = angle2;
         double result = 180 - angle1 - angle2;

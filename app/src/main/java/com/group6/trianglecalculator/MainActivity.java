@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView angleBOutput;
     private TextView angleCOutput;
 
+    //alert Dialog box
+    private AlertDialog alertDialog;
 
-
+    //input validation;
+    boolean canShowOutputs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,12 @@ public class MainActivity extends AppCompatActivity {
         //grab layouts
         inputLayout = (LinearLayout) findViewById(R.id.inputLayout);
         outputLayout = (LinearLayout) findViewById(R.id.outputLayout);
+
+        //setup alert dialog
+        alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Invalid Inputs");
+        alertDialog.setMessage("Please enter complete and accurate data.");
+        alertDialog.setCancelable(true);
 
 
         /* The next few lines populates the spinner with the string-array located in res/strings
@@ -120,9 +130,15 @@ public class MainActivity extends AppCompatActivity {
         //bind referenceImage
         referenceImage = findViewById(R.id.imageView);
 
+        //input validation bit
+        canShowOutputs = true;
+
     }
 
     public void calculateTriangle(View view){
+
+        double temp1, temp2, temp3;
+
         System.out.println(theorem);
 
         //these lines close the keyboard when button is clicked
@@ -138,12 +154,54 @@ public class MainActivity extends AppCompatActivity {
         //switch statement to decide theorem method
         switch(theorem){
             case "AAA":
+
+                //input validation
+                if (angleAinput.getText().toString().isEmpty()
+                        || angleBinput.getText().toString().isEmpty()){
+                    alertDialog.setMessage("Please enter complete and accurate data.");
+                    alertDialog.show();
+                    canShowOutputs = false;
+                    break;
+                }
+
+                temp1 = Double.parseDouble(angleAinput.getText().toString());
+                temp2 = Double.parseDouble(angleBinput.getText().toString());
+
+                if ( temp1 + temp2 >= 180 ) {
+                    alertDialog.setMessage("Angle sum is larger than 180 degrees.");
+                    alertDialog.show();
+                    canShowOutputs = false;
+                    break;
+                }
+
                 triangle.CalculateAAA(
                         Double.parseDouble(angleAinput.getText().toString()),
-                        Double.parseDouble(angleBinput.getText().toString())
-                );
+                        Double.parseDouble(angleBinput.getText().toString()));
+
                 break;
+
             case "AAS":
+
+                //input validation
+                if (angleAinput.getText().toString().isEmpty()
+                        || angleBinput.getText().toString().isEmpty()
+                        || sideAinput.getText().toString().isEmpty()){
+                    alertDialog.setMessage("Please enter complete and accurate data.");
+                    alertDialog.show();
+                    canShowOutputs = false;
+                    break;
+                }
+
+                temp1 = Double.parseDouble(angleAinput.getText().toString());
+                temp2 = Double.parseDouble(angleBinput.getText().toString());
+
+                if ( temp1 + temp2 >= 180 ) {
+                    alertDialog.setMessage("Angle sum is larger than 180 degrees.");
+                    alertDialog.show();
+                    canShowOutputs = false;
+                    break;
+                }
+
                 triangle.CalculateAAS(
                         Double.parseDouble(angleAinput.getText().toString()),
                         Double.parseDouble(angleBinput.getText().toString()),
@@ -152,6 +210,16 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case "SAS":
+
+                //input validation
+                if (sideCinput.getText().toString().isEmpty()
+                        || angleBinput.getText().toString().isEmpty()
+                        || sideAinput.getText().toString().isEmpty()){
+                    alertDialog.show();
+                    canShowOutputs = false;
+                    break;
+                }
+
                 triangle.CalculateSAS(
                         Double.parseDouble(sideCinput.getText().toString()),
                         Double.parseDouble(angleBinput.getText().toString()),
@@ -160,6 +228,16 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case "ASA":
+
+                //input validation
+                if (angleAinput.getText().toString().isEmpty()
+                        || angleBinput.getText().toString().isEmpty()
+                        || sideCinput.getText().toString().isEmpty()){
+                    alertDialog.show();
+                    canShowOutputs = false;
+                    break;
+                }
+
                 triangle.CalculateASA(
                         Double.parseDouble(angleAinput.getText().toString()),
                         Double.parseDouble(sideCinput.getText().toString()),
@@ -167,6 +245,16 @@ public class MainActivity extends AppCompatActivity {
                 );
                 break;
             case "SSS":
+
+                //input validation
+                if (sideAinput.getText().toString().isEmpty()
+                        || sideBinput.getText().toString().isEmpty()
+                        || sideCinput.getText().toString().isEmpty()){
+                    alertDialog.show();
+                    canShowOutputs = false;
+                    break;
+                }
+
                 triangle.CalculateSSS(
                         Double.parseDouble(sideAinput.getText().toString()),
                         Double.parseDouble(sideBinput.getText().toString()),
@@ -180,6 +268,7 @@ public class MainActivity extends AppCompatActivity {
 
         //show output
         showOutputs();
+
 
         triangle.debugLog();
     }
@@ -329,6 +418,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showOutputs(){
+
+        if (!canShowOutputs){
+            canShowOutputs = true;
+            return;
+        }
 
         //if AAA theorem is used do not show sides
         if (theorem.equals("AAA")){
