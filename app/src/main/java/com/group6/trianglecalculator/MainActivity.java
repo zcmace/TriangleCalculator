@@ -212,12 +212,26 @@ public class MainActivity extends AppCompatActivity {
             case "SAS":
 
                 //input validation
-                if (sideCinput.getText().toString().isEmpty()
+                if ((sideCinput.getText().toString().isEmpty()
                         || angleBinput.getText().toString().isEmpty()
-                        || sideAinput.getText().toString().isEmpty()){
+                        || sideAinput.getText().toString().isEmpty())){
+
+                    alertDialog.setMessage("Please enter complete and accurate data.");
                     alertDialog.show();
                     canShowOutputs = false;
                     break;
+
+                }
+
+                temp1 = Double.parseDouble(angleBinput.getText().toString());
+
+                if (temp1 >= 180){
+
+                    alertDialog.setMessage("Please enter complete and accurate data.");
+                    alertDialog.show();
+                    canShowOutputs = false;
+                    break;
+
                 }
 
                 triangle.CalculateSAS(
